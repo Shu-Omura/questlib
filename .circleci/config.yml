@@ -1,0 +1,75 @@
+version: 2.1
+
+executors:
+  default:
+    docker:
+      - image: circleci/ruby:2.7.1-node-browsers-legacy
+        environment:
+          BUNDLE_RETRY: 3
+          BUNDLE_PATH: vendor/bundle
+          RAILS_ENV: test
+          MYSQL_HOST: 127.0.0.1
+          MYSQL_USER: root
+          MYSQL_PASSWORD: password
+      - image: circleci/mysql
+        command: [--default-authentication-plugin=mysql_native_password]
+        environment:
+          MYSQL_ROOT_PASSWORD: password
+
+commands:
+  configure_bundle:
+    steps:
+      - run:
+          name: Configure Bundler
+          command: |
+            gem update --system
+            gem install bundler
+  bundle_with_cache:
+    steps:
+      - restore_cache:
+          keys:
+            - questlib-bundle-{{ checksum "Gemfile.lock" }}
+            - questlib-bundle-
+      - run:
+          name: Bundle Install
+          command: bundle check || bundle install --jobs=8 --clean
+      - save_cache:
+          key: questlib-bundle-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+  yarn_with_cache:
+    steps:
+      - restore_cache:
+          keys:
+            - questlib-yarn-{{ checksum "yarn.lock" }}
+            - questlib-yarn-
+      - run:
+          name: Yarn Install
+          command: yarn install --cache-folder ~/.cache/yarn
+      - save_cache:
+          key: questlib-yarn-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+
+jobs:
+  build:
+    executor: default
+    steps:
+      - checkout
+      - configure_bundle
+      - bundle_with_cache
+      - yarn_with_cache
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://127.0.0.1:3306 -timeout 1m
+      - run:
+          name: Database setup
+          command: |
+            bin/rails db:create db:schema:load --trace
+      - run:
+          name: Run rspec
+          command: |
+            bundle exec rspec
+      - run:
+          name: Run rubocop
+          command: bundle exec rubocop --parallel
