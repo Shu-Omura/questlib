@@ -1,0 +1,32 @@
+$light-grey: rgb(220, 220, 220);
+
+.alert {
+  text-align: center;
+}
+
+header {
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid $light-grey;
+  box-shadow: 0 1px 8px rgb(241, 241, 241);
+  li {
+    display: flex;
+    justify-content: flex-end;
+    height: 100%;
+    margin: 0 3rem;
+    a {
+      display: inline-block;
+      margin: auto 1rem;
+      padding: 0.5rem 2rem;
+      border: 1px solid darken($light-grey, 20%);
+      border-radius: 0.4rem;
+      font-size: 1.5rem;
+      color: darken($light-grey, 40%);
+      &:hover {
+        text-decoration: none;
+        background-color: lighten($light-grey, 10%);
+        color: darken($light-grey, 40%);
+      }
+    }
+  }
+}
