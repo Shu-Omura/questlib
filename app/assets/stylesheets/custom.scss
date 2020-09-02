@@ -1,4 +1,5 @@
 $light-grey: rgb(220, 220, 220);
+$light-blue: #0095f6;
 
 .alert {
   text-align: center;
@@ -26,6 +27,46 @@ header {
         text-decoration: none;
         background-color: lighten($light-grey, 10%);
         color: darken($light-grey, 40%);
+      }
+    }
+  }
+}
+
+.sign_up {
+  margin-top: 50px;
+  .wrapper {
+    height: 50rem;
+    text-align: center;
+    box-shadow: 1px 1px 10px $light-grey;
+    border: 1px solid $light-grey;
+    span {
+      display: inline-block;
+      font-family: 'Noteworthy', sans-serif;
+      margin: 2rem 0;
+      padding: 0.5rem 0;
+      width: 90%;
+      font-size: 4rem;
+      font-weight: bolder;
+      border-bottom: 2px solid $light-grey;
+    }
+    input {
+      width: 90%;
+      margin-bottom: 0.6rem;
+      padding: 0.8rem;
+      border: 1px solid darken($light-grey, 15%);
+      border-radius: 0.3rem;
+      background-color: lighten($light-grey, 12%);
+      font-size: 13px;
+    }
+    .submit {
+      margin-top: 0.6rem;
+      padding: 0.5rem;
+      background-color: $light-blue;
+      color: white;
+      font-weight: bold;
+      border: none;
+      &:hover {
+        background-color: darken($light-blue, 5%);
       }
     }
   }

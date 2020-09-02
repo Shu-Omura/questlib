@@ -1,29 +1,15 @@
-<h2>Sign up</h2>
+<section class="row sign_up">
+  <div class="col-md-4 col-md-offset-1 wrapper">
+    <span>Questlib</span>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render 'users/shared/error_messages', resource: resource %>
+      <%= f.email_field :email, autofocus: true, autocomplete: 'email', placeholder: 'メールアドレス' %>
+      <%= f.password_field :password, autocomplete: 'new-password', placeholder: 'パスワード' %>
+      <%= f.password_field :password_confirmation, autocomplete: 'new-password', placeholder: 'パスワード再確認' %>
+      <%= f.submit '登録する', class: 'submit' %>
+    <% end %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <p>アカウントをお持ちの場合は<%= link_to 'こちら', sign_in_path %></p>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+</section>
