@@ -20,7 +20,7 @@ RSpec.describe 'Posts', type: :request do
 
       it 'returns http 200' do
         expect(response).to have_http_status(302)
-      end      
+      end
     end
   end
 end
