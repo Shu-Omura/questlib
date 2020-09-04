@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_04_060711) do
+ActiveRecord::Schema.define(version: 2020_09_04_083625) do
+
+  create_table "belongs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "team_id", null: false
+    t.bigint "company_id", null: false
+    t.boolean "admin", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_belongs_on_company_id"
+    t.index ["team_id"], name: "index_belongs_on_team_id"
+    t.index ["user_id"], name: "index_belongs_on_user_id"
+  end
 
   create_table "companies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -43,4 +55,7 @@ ActiveRecord::Schema.define(version: 2020_09_04_060711) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "belongs", "companies"
+  add_foreign_key "belongs", "teams"
+  add_foreign_key "belongs", "users"
 end
