@@ -8,5 +8,6 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :teams
 
   validates :name, presence: true
-  validates :tel, format: { with: VALID_TEL_REGEX }, allow_nil: true, allow_blank: true
+  validates :tel, format: { with: VALID_TEL_REGEX }, allow_blank: true
+  validates :belongs, presence: true
 end
