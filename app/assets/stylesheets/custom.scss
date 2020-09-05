@@ -35,7 +35,6 @@ header {
 .sign_up {
   margin-top: 50px;
   .wrapper {
-    height: 50rem;
     text-align: center;
     box-shadow: 1px 1px 10px $light-grey;
     border: 1px solid $light-grey;
@@ -68,6 +67,9 @@ header {
       &:hover {
         background-color: darken($light-blue, 5%);
       }
+    }
+    p {
+      margin-bottom: 4rem;
     }
   }
 }

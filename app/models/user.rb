@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
   has_many :belongs, dependent: :destroy
   has_many :teams, through: :belongs
-  has_many :companies, through: :belongs
+  accepts_nested_attributes_for :teams
 
   validates :name, presence: true
   validates :tel, format: { with: VALID_TEL_REGEX }, allow_nil: true, allow_blank: true
