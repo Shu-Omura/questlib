@@ -11,9 +11,7 @@
 
   <body>
     <%= render 'layouts/header' %>
-    <% flash.each do |message_type, message| %>
-      <%= content_tag(:div, message, class: "alert alert-#{bootstrap_class_for(message_type)}") %>
-    <% end %>
+    <%= render 'shared/flash' unless controller.controller_name == 'sessions' %>
     <div class="container">
       <%= yield %>
     </div>
