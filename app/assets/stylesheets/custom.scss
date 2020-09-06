@@ -7,26 +7,41 @@ $light-blue: #0095f6;
 
 header {
   width: 100%;
-  height: 50px;
+  height: 60px;
   border-bottom: 1px solid $light-grey;
   box-shadow: 0 1px 8px rgb(241, 241, 241);
-  li {
+  .header-wrapper {
     display: flex;
-    justify-content: flex-end;
     height: 100%;
-    margin: 0 3rem;
-    a {
-      display: inline-block;
-      margin: auto 1rem;
-      padding: 0.5rem 2rem;
-      border: 1px solid darken($light-grey, 20%);
-      border-radius: 0.4rem;
-      font-size: 1.5rem;
-      color: darken($light-grey, 40%);
-      &:hover {
-        text-decoration: none;
-        background-color: lighten($light-grey, 10%);
+    margin: 0 1.5rem;
+    .logo {
+      margin: auto auto auto 4rem;
+      font-size: 2.8rem;
+      font-family: 'Noteworthy', sans-serif;
+      font-weight: bolder;
+      a {
+        color: black;
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+    li {
+      margin: auto 3rem;
+      list-style: none;
+      a {
+        display: inline-block;
+        margin-right: 1.5rem;
+        padding: 0.5rem 2rem;
+        border: 1px solid darken($light-grey, 20%);
+        border-radius: 0.4rem;
+        font-size: 1.5rem;
         color: darken($light-grey, 40%);
+        &:hover {
+          text-decoration: none;
+          background-color: lighten($light-grey, 10%);
+          color: darken($light-grey, 40%);
+        }
       }
     }
   }
