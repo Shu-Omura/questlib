@@ -10,9 +10,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super { resource.belongs.last&.update(admin: true) }
+  end
 
   # GET /resource/edit
   # def edit

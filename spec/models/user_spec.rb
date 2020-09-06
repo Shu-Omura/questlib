@@ -17,7 +17,8 @@ RSpec.describe User, type: :model do
     end
 
     context 'without teams' do
-      let(:user) { build(:user, teams: []) }
+      let(:user) { build(:user, teams: [team]) }
+      let(:team) { build(:team, name: '') }
 
       it_behaves_like 'is invalid'
     end

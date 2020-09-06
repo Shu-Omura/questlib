@@ -9,5 +9,4 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :tel, format: { with: VALID_TEL_REGEX }, allow_blank: true
-  validates :belongs, presence: true
 end
