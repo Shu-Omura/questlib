@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_04_083625) do
+ActiveRecord::Schema.define(version: 2020_09_06_074428) do
 
   create_table "belongs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -20,6 +20,19 @@ ActiveRecord::Schema.define(version: 2020_09_04_083625) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["team_id"], name: "index_belongs_on_team_id"
     t.index ["user_id"], name: "index_belongs_on_user_id"
+  end
+
+  create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "title", null: false
+    t.string "content", null: false
+    t.string "content_type", null: false
+    t.string "tag"
+    t.boolean "solved", default: false
+    t.string "image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "teams", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -49,4 +62,5 @@ ActiveRecord::Schema.define(version: 2020_09_04_083625) do
 
   add_foreign_key "belongs", "teams"
   add_foreign_key "belongs", "users"
+  add_foreign_key "posts", "users"
 end

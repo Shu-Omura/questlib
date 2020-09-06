@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
   has_many :belongs, dependent: :destroy
   has_many :teams, through: :belongs
+  has_many :posts
   accepts_nested_attributes_for :teams
 
   validates :name, presence: true
