@@ -1,0 +1,14 @@
+<header>
+  <div class="header-wrapper">
+    <div class="logo"><%= link_to 'Questlib', root_path %></div>
+    <li>
+      <% if user_signed_in? %>
+        <%= link_to 'ライブラリー', posts_path %>
+        <%= link_to 'ログアウト', sign_out_path, method: :delete %>
+      <% else %>
+        <%= link_to '新規登録', sign_up_path %>
+        <%= link_to 'ログイン', sign_in_path %>
+      <% end %>
+    </li>
+  </div>
+</header>

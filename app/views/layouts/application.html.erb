@@ -10,6 +10,10 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'layouts/header' %>
+    <%= render 'shared/flash' unless controller.controller_name == 'sessions' %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
