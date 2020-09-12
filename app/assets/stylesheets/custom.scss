@@ -1,6 +1,15 @@
 $light-grey: rgb(220, 220, 220);
 $light-blue: #0095f6;
 
+@mixin input-border {
+  border: 1px solid darken($light-grey, 15%);
+  border-radius: 0.3rem;
+}
+
+section {
+  margin-top: 5rem;
+}
+
 .alert {
   text-align: center;
 }
@@ -64,11 +73,10 @@ header {
       border-bottom: 2px solid $light-grey;
     }
     input {
+      @include input-border;
       width: 90%;
       margin-bottom: 0.6rem;
       padding: 0.8rem;
-      border: 1px solid darken($light-grey, 15%);
-      border-radius: 0.3rem;
       background-color: lighten($light-grey, 12%);
       font-size: 13px;
     }
@@ -86,5 +94,70 @@ header {
     p {
       margin-bottom: 4rem;
     }
+  }
+}
+
+.post-form {
+  margin-top: 7rem;
+  .header {
+    margin-bottom: 3rem;
+  }
+  .field {
+    input, textarea {
+      @include input-border;
+      width: 100%;
+      margin-bottom: 2rem;
+      padding: 1rem;
+    }
+    textarea {
+      height: 20rem;
+    }
+    .submit {
+      background-color: $light-grey;
+    }
+  }
+}
+
+.link {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.post {
+  margin: -1px 0;
+  padding: 1rem 0;
+  border: 1px solid $light-grey;
+  &:hover {
+    box-shadow: 0 1px 8px rgb(241, 241, 241);
+  }
+  &__list {
+    list-style: none;
+    padding-left: 0;
+    color: rgb(80, 80, 80);
+    &--default {
+      padding-top: 0.5rem;
+      font-size: 16px;
+      text-align: center;
+    }
+  }
+  &__state {
+    margin-bottom: 0.2rem;
+    padding: 0.2rem 0;
+    text-align: center;
+    font-size: 11px;
+    color: white;
+    border-radius: 1rem;
+    &--primary {
+      background-color: darken($light-grey, 25%);
+    }
+    &--secondary {
+      background-color: skyblue;
+    }
+  }
+  &__title {
+    font-size: 26px;
+    font-weight: bold;
+    color: black;
   }
 }

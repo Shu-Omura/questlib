@@ -1,0 +1,12 @@
+<section class="row post-form">
+  <h3 class="col-sm-8 col-sm-offset-2 header"><%= header %>を投稿する</h4>
+  <%= form_with(model: @post, local: true) do |f| %>
+    <div class="col-sm-8 col-sm-offset-2 field">
+      <%= f.text_field :title, required: true, placeholder: 'タイトル' %>
+      <%= f.text_area :content, required: true, placeholder: '内容' %>
+      <%= f.text_field :tag, placeholder: 'タグ' %>
+      <%= f.hidden_field :content_type, value: content_type %>
+      <%= f.submit '投稿する', class: 'submit' %>
+    </div>
+  <% end %>
+</section>

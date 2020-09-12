@@ -1,2 +1,20 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<section class="col-sm-8 col-sm-offset-2">
+  <% @posts.each do |post| %>
+    <%= link_to(post_path(post), class: 'link') do %>
+    <ul class="row post">
+      <div class="col-sm-2">
+        <li class="post__list post__state post__state--primary"><%= show_type(post.content_type) %></li>
+        <% if post.content_type == 'question' %>
+          <li class="post__list post__state post__state--secondary"><%= show_state(post.solved) %></li>
+        <% end %>
+        <li class="post__list post__list--default"><%= post.user.name %></li>
+      </div>
+      <div class="col-sm-10">
+        <li class="post__list"><%= time_ago_in_words(post.created_at) %> ago.</li>
+        <li class="post__list post__title"><%= post.title %></li>
+        <li class="post__list"><%= post.content %></li>
+      </div>
+    </ul>
+    <% end %>
+  <% end %>
+</section>

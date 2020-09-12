@@ -3,6 +3,8 @@
     <div class="logo"><%= link_to 'Questlib', root_path %></div>
     <li>
       <% if user_signed_in? %>
+        <%= link_to '質問する', new_post_path(path: 'question') %>
+        <%= link_to 'メモを書く', new_post_path(path: 'memo') %>
         <%= link_to 'ライブラリー', posts_path %>
         <%= link_to 'ログアウト', sign_out_path, method: :delete %>
       <% else %>

@@ -4,16 +4,16 @@
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render 'users/shared/error_messages', resource: resource %>
-      <%= f.text_field :name, autofocus: true, autocomplete: 'name', placeholder: '名前' %>
-      <%= f.email_field :email, autofocus: true, autocomplete: 'email', placeholder: 'メールアドレス' %>
+      <%= f.text_field :name, autofocus: true, autocomplete: 'name', required: true, placeholder: '名前' %>
+      <%= f.email_field :email, autofocus: true, autocomplete: 'email', required: true, placeholder: 'メールアドレス' %>
 
       <%= f.fields_for :teams do |t| %>
-        <%= t.text_field :name, autofocus: true, autocomplete: 'team_name', placeholder: 'チーム名' %>
+        <%= t.text_field :name, autofocus: true, autocomplete: 'team_name', required: true, placeholder: 'チーム名' %>
       <% end %>
 
       <%= f.text_field :tel, autofocus: true, autocomplete: 'tel', placeholder: '電話番号（任意）' %>
-      <%= f.password_field :password, autocomplete: 'new-password', placeholder: 'パスワード' %>
-      <%= f.password_field :password_confirmation, autocomplete: 'new-password', placeholder: 'パスワード再確認' %>
+      <%= f.password_field :password, autocomplete: 'new-password', required: true, placeholder: 'パスワード' %>
+      <%= f.password_field :password_confirmation, autocomplete: 'new-password', required: true, placeholder: 'パスワード再確認' %>
       <%= f.submit '登録する', class: 'submit' %>
     <% end %>
 
